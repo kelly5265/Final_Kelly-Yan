@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+
+    <!--Search Bar-->
+    <div class="sidebar">
+    </div>
+      <div class="inputgroup">
+        <h2 class = "search_title">Search Bar</h2>
+        <label for="year_built_0">Built Year Range</label><br>
+        <input id="year_built_0" type="number">
+        <label for="year_built_1">to</label>
+        <input id="year_built_1" type="number"><br>
+        <label for="sel">Bedroom Number</label>
+        <select id="sel_bd_num" type="number">
+          <option value="All">All</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+        </select>
+        <br>
+        <label for="sel">Bathroom Number</label>
+        <select id="sel_ba_num" type="number">
+          <option value="All">All</option>
+          <option value=0>0</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+        </select><br>
+        <button id="search">Search</button>
+        <button id="clear">Clear Results</button>
+      </div>
+
+    
+      <div id="greeting">
+        <h3>This map is a tool for navigating through the housing transactions in Boston area in 2015. Use the search bar to customize your search results. Otherwise, toggle between Single Property View and Cluster View (by Zipcode). Click on each property or zipcode area to view individual property level or aggregated information. Refer to the two summary charts of the whole dataset for a comprehensive analysis.</h3>
+      </div>
+
+      <div id = "single_result" style="display: none;">
+        <h1 class="result_title">Property Information</h1>
+        <p id = "result">Address: <span class="address"></span></p>
+        <p id = "result">Zipcode: <span class="zip_ind"></span></p> 
+        <p id = "result">Sale Price: $ <span class="pri" type="number"></span></p>
+        <p id = "result">Sale Date: <span class="sale_mo"></span>-<span class="sale_da" type="number"></span>-<span class="sale_yr" type="number"></span></p>
+        <p id = "result">Number of Floors: <span class="floor_num" type="number"></span></span></p>
+        <p id = "result">Living Area: <span class="liv_area" type="number"></span></span> SF</p>
+        <p id = "result">Number of Bedrooms: <span class="bd" type="number"></span></p>
+        <p id = "result">Number of Bathrooms: <span class="ba" type="number"></span></p>
+        <p id = "result">Owner Occupied: <span class="owner"></span></p>
+        <p id = "result">Year Built: <span class="bui_yr" type="number"></span></p>
+        <p id = "result">Year Remodeled: <span class="remo_yr" type="number"></span></p>
+      </div>
+
+      <div id = "zip_result" style="display: none;">
+        <h1 class="result_title">Zipcode <span class="zip"></span> Summary</h1>
+        <p id = "result">Average Bedroom Numbers: <span class="avg_bd_num"type="number" ></span></p>
+        <p id = "result">Average Bathroom Numbers: <span class="avg_ba_num"></span></p>
+        <p id = "result">Average Sale Price: $ <span class="avg_sale"></span></p>
+        <p id = "result">Average Sale Price PSF: $ <span class="avg_sale_unit"></span></p>
+        <p id = "result">Average Gross Area: <span class="gross_area"></span> SF</p>
+        <p id = "result">Average Living Area: <span class="living_area"></span> SF</p>
+      </div>
+
+
+    <!--Summary Section-->
+    <div class="chart_heading"></div>
+    <h1 class = "summary_chart_title">Summary Charts</h1>
+    <div id="summary_chart">
+      <canvas id = "Chart1" width="300" height="300"></canvas>
+      <canvas id = "Chart2" width="300" height="300"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </div>
+
+    <!-- Map -->
+    <div id="map"></div>
+    <button id="single_view">Single Property View</button>
+    <button id="cluster_view">Cluster View</button>
+    
+    <!-- Javascript Imports -->
+    <script src="js/leaflet.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/2.0.2/turf.js"></script>
+    <script src="js/jquery-2.2.0.js"></script>
+    <script src="js/final.js"></script>
+  </body>
+</html>
